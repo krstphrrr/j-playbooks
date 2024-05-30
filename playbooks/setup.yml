@@ -1,1 +1,17 @@
-# fixing the mongodb = its at swcapps
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: "install :: updates package lists"
+    become: true
+    ansible.builtin.apt:
+      update_cache: true
+      force_apt_get: true
+
+  - name: "install :: upgrades package lists"
+    become: true
+    ansible.builtin.apt:
+      upgrade: full
+      force_apt_get: true
